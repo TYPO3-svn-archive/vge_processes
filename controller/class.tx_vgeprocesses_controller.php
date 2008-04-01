@@ -56,6 +56,7 @@ class tx_vgeprocesses_controller extends tslib_pibase {
 			// Initialise the controller
 		$this->init($conf);
 //t3lib_div::debug($this->conf);
+//t3lib_div::debug($this->piVars);
 
 		$content = '';
 //t3lib_div::debug($GLOBALS['T3_SERVICES']);
@@ -68,7 +69,7 @@ class tx_vgeprocesses_controller extends tslib_pibase {
 					$serviceObject = t3lib_div::makeInstanceService('process_models', $serviceData['subtype']);
 						// Check which subtype can handle the selected process and get the model from it
 					if ($serviceObject->hasProcess($this->piVars['process'])) {
-						$data = $serviceObject->getDataForStep($this->piVars);
+						$data = $serviceObject->getDataForStep($this->piVars, $this);
 						$hasProcess = true;
 						break;
 					}

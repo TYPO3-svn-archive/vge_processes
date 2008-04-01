@@ -34,6 +34,7 @@ require_once(PATH_t3lib.'class.t3lib_svbase.php');
 abstract class tx_vgeprocesses_model_base extends t3lib_svbase {
 	protected $processList; // List of processes handled by a particular service
 	protected $locallangFile; // Path of the locallang file to load for labels, descriptions, etc.
+	protected $controller; // Reference to the controller object
 
 	public function __construct() {
 		if (!empty($this->locallangFile)) {
@@ -64,11 +65,12 @@ abstract class tx_vgeprocesses_model_base extends t3lib_svbase {
 	/**
 	 * This process returns all the data related to a given process at a given step
 	 *
-	 * @param	array	$parameters: list of parameters, including process name, step, etc.
+	 * @param	array		$parameters: list of parameters, including process name, step, etc.
+	 * @param	reference	$controller: reference to the controller object
 	 *
 	 * @return	array	all data related to the process and step
 	 */
-	abstract public function getDataForStep($parameters);
+	abstract public function getDataForStep($parameters, &$controller);
 }
 
 
