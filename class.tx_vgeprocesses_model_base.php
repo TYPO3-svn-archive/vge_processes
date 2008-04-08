@@ -66,11 +66,12 @@ abstract class tx_vgeprocesses_model_base extends t3lib_svbase {
 	 * This process returns all the data related to a given process at a given step
 	 *
 	 * @param	array		$parameters: list of parameters, including process name, step, etc.
+	 * @param	array		$configuration: TypoScript configuration of the process subtype
 	 * @param	reference	$controller: reference to the controller object
 	 *
 	 * @return	array	all data related to the process and step
 	 */
-	abstract public function getDataForStep($parameters, &$controller);
+	abstract public function getDataForStep($parameters, $configuration, &$controller);
 }
 
 
